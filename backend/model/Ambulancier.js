@@ -24,6 +24,10 @@ const ambulancierShema = mongoose.Schema({
     structure : {
         type : String,
         required : true
+    },
+    imageURL : {
+        type : String,
+        required : true
     }
 })
 

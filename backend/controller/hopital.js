@@ -1,6 +1,5 @@
 const Hopital = require('../model/Hopital')
 const bcrypt= require('bcrypt')
-const { generateToken } = require('../utils/token.js')
 const jwt = require('jsonwebtoken')
 
 
@@ -9,7 +8,7 @@ class hopitalController {
         try {
             console.log(req.body)
            const emailUsed = await Hopital.findOne({email : req.body.email})
-           const nomHopitalUsed = await Hopital.findOne({nomHopital : req.body.nomHopital})
+           const nomHopitalUsed = await Hopital.findOne({nomHopital : req.body.nomHopital});
            const contactUsed = await Hopital.findOne({contact : req.body.contact});
            const password = req.body.password
 
@@ -29,7 +28,7 @@ class hopitalController {
                 password : hash
             }) 
             hosto.save()
-            .then(res.status(200).json({message : "votre hoptital à été enrigistré avec succès !"}))
+            .then(res.status(200).json({message : "votre hoptital à été enrigistré avec succès !" , hosto}))
             
             .catch(err => res.status(400).json({message : "enregistrement impossible !"}))
            })
@@ -60,7 +59,6 @@ class hopitalController {
                     return;
                 }
                 res.cookie("token" , jwt.sign({userId : user._id} , "RANDOM_TOKEN_SECRET" , {expiresIn : "24h"}))
-                console.log(res.cookie("token" , jwt.sign({userId : user._id} , "RANDOM_TOKEN_SECRET" , {expiresIn : "24h"})))
                 res.status(200).json({
                     message : "Connexion éffectué avec succès !!",
                     userId :user._id,
@@ -78,23 +76,42 @@ class hopitalController {
         }
     }
 
-    static async getAll(req , res ){
+    static async getOne(req , res){
+        const { id } = req.params
+        const hotpital = await Hopital.findOne({_id : id})
+
         try {
-            Hopital.find()
-            .then(allHopitaux =>{
-                if(!allHopitaux){
-                  return res.status(400).json({message : "aucun hopital enregistrer !!"})
-                }
-                res.status(200).json({
-                    status : true,
-                    allHopitaux
-                })
-            })
+            if(!hotpital){
+                return res.status(400).json({message : "cet hopital n'existe pas !!!"})
+            }
+            res.status(200).json({message : "cet hopital existe bien !!" , hotpital})
         } catch (error) {
             console.log(error)
-            res.status(400).json({message : "une erreur est survenu lors de la recuperation !!"});
+            res.status(400).json({message : "une erreur est survenu lors du traitements"})
         }
     }
+
+
+    static async getAll(req , res ){
+        try {
+            await Hopital.find()
+            .then(allHopitaux =>{
+                if(!allHopitaux.length){
+                    return res.status(400).json({message : "la liste est vide !!!"});
+                }
+                res.status(200).json({message : "liste des hopitaux enregistrés..." , allHopitaux})
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(400).json({message : "une erreur s'est produite lors du traitement !!" , })
+        })
+
+        } catch (error) {
+            console.log(error)
+            res.status(400).json({message : " une erreur est survenu lors de la recuperation de la liste des hopitaux !!!"})
+        }
+    }
+
 
 
     static async delete(req , res){

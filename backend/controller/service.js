@@ -61,7 +61,7 @@ class serviceController{
             if(!hopital){
                 return res.status(400).json({message : "vous n'avez pas cette autorisation !!"})
             }
-            await Service.find()
+            await Service.find({status : 1})
             .then(allService =>{
                 if(!allService){
                     return res.status(400).json({message : "aucun liste disponible !!"})
@@ -113,7 +113,8 @@ class serviceController{
             if(!service){
                 return res.status(400).json({message : "ce service n'existe pas !!!"})
             }
-            service.deleteOne({_id : id});
+            // mettre le status a 0 pour ne plus l'afficher mais le garder dans la base de donné 
+            service.updateOne({status : req.body.status})
             return res.status(200).json({message : " cet utilisateur à été supprimé  avec succès !!" , service})
 
         } catch (error) {

@@ -26,6 +26,7 @@ class ambulancierController{
                 email : req.body.email,
                 contact : req.body.contact,
                 structure : req.body.structure,
+                imageURL : req.body.imageURL,
                 password : hash
             })
             creatAmbulancier.save()
@@ -129,7 +130,7 @@ class ambulancierController{
             const emailUsed = await Ambulancier.findOne({email : req.body.email})
             const contactUsed = await Ambulancier.findOne({contact : req.body.contact})
             if(!ambulancier){
-                res.status(400).json({status : false , message : "une  erreur s'est produite"})
+                res.status(400).json({status : false , message : "cet ambulancier n'extiste pas !"})
                 return;
             }
             console.log(ambulancier)
