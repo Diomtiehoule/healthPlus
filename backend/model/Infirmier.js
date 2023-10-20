@@ -14,6 +14,10 @@ const infirmierSchema = mongoose.Schema({
         type : String,
         required : true,
     },
+    residence : {
+        type : String,
+        required : true
+    },
     imageURL : {
         type : String,
         required : true

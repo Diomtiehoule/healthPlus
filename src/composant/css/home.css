@@ -1,0 +1,100 @@
+.main_image{
+    background-image: url('../../media/main_image.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 87.5vh;
+}
+.main_image h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding-top: 15%;
+    color: black;
+    font-size: 2.5rem;
+    width: 51%;
+}
+.zone_register{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    gap: 20px;
+    margin-top: 2%;
+}
+.zone_register button{
+    width: 14%;
+    height: 5vh;
+    background-color: #31B5A5;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.1rem;
+}
+
+
+.presentation h1{
+    color: #31B5A5;
+    font-weight: bold;
+}
+.presentation{
+    text-align: center;
+    margin-top: 10%;
+}
+.presentation p{
+    font-size: 1.3rem;
+    width: 45%;
+    margin: 0 auto;
+    margin-bottom: 5%;
+}
+
+
+
+
+.relation{
+    text-align: center;
+    font-size: 1.6rem;
+}
+.carte-acc {
+    height: auto;
+    display: flex;
+    padding: auto;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    /* border: 1px solid black; */
+    padding: 20px;
+  }
+  .form-acc {
+    height: auto;
+    width: 350px;
+    background: #fff;
+    cursor: pointer;
+    position: relative;
+    border-radius: 5px;
+   box-shadow: -9px 9px 18px #5a5a5a,
+                9px -9px 18px #ffffff;
+  }
+  .form-acc h4 {
+    color: #fff;
+    font-size: 1.4rem;
+    position: absolute;
+    /* margin-top: 8%;
+    margin-left: 2%; */
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+  }
+  
+  .form-acc img {
+    height: 200px;
+    width: 100%;
+    opacity: 1;
+  }
+  .form-acc p {
+    padding: 20px;
+    font-size: 1.2rem;
+  }

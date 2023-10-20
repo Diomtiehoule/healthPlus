@@ -11,6 +11,7 @@ const ambulancierRouter = require('./routes/ambulancier')
 const serviceRouter = require('./routes/service')
 const urgenceRouter = require('./routes/urgence')
 const docteurRouter = require('./routes/docteur')
+const infirmierRouter = require('./routes/infirmier');
 
 mongoose.connect( LINK_MONGO, {
     useNewUrlParser : true,
@@ -40,6 +41,7 @@ app.use('/api/ambulancier' , ambulancierRouter);
 app.use('/api/service' , serviceRouter);
 app.use('/api/urgence' , urgenceRouter);
 app.use('/api/docteur' , docteurRouter);
+app.use('/api/infirmier' , infirmierRouter);
 
 
 

@@ -1,0 +1,25 @@
+.body_home nav{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1%;
+    padding-right: 1%;
+    border-bottom: 2px solid black;
+}
+.body_home h1{
+    color : #31B5A5;
+}
+.body_home h1 span{
+    color: #31B5A5;
+    font-size: 2rem;
+}
+.body_home nav ul{
+    display: flex;
+    gap: 50px;
+    margin-top: 25px;
+}
+.body_home nav ul li{
+    list-style: none;
+}
+.body_home p{
+    font-size: 1.2rem;
+}

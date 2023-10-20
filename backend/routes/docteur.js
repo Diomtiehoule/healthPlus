@@ -5,7 +5,8 @@ const auth = require('../middleware/auth')
 const multer = require('../middleware/multer')
 
 router.post('/create' ,multer , auth , docteurController.create);
-router.post('/all' , docteurController.getAll);
+router.get('/all' , auth , docteurController.getAll);
+router.put('/edit/:id' , auth, docteurController.edit);
 
 
 module.exports = router
